@@ -10,3 +10,15 @@ Cand linia de jos e plina avem 3.
 ...
 Cand toate rezervoarele sunt pline avem 9.
 Cand apa creste in rezervorul mare la fel cresc si numerele.
+
+Pentru desenare avem nevoie sa luăm de undeva elementele grafice.
+Ele vor fi luate dintr-o temă - pe care o vom implementa folosind un dicționar.
+Dar pentru a putea fi accesate avem nevoie de cheile de acces, de 'numele' valorilor
+respective din temă.
+Aceste nume vor servi ca element comun între partea de construire a comenzilor
+de desenat - cifra_rezervor.py și modulul în care se va face efectiv desenarea
+(care nu este încă implementat).
+Pentru a nu gresi un nume in programul de desenare le vom introduce folosind un fisier
+de constante - constante_grafice.py. Numele nu vor putea apartine decat setului
+de constante definit in acel modul. In felul acesta nu vom putea face nicio greseala
+de tastare (care va fi greu de depistat).
