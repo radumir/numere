@@ -1,1 +1,4 @@
 
+Anumite instructiuni se repeta de mai multe ori.
+In cazul asta adaugarea unei metode in care izolam codul comun
+constituie o imbunatatire a codului.
