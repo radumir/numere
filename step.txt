@@ -1,0 +1,7 @@
+Pentru desenare avem nevoie sa luăm de undeva elementele grafice.
+Ele vor fi luate dintr-o temă - pe care o vom implementa folosind un dicționar.
+Dar pentru a putea fi accesate avem nevoie de cheile de acces, de 'numele' valorilor
+respective din temă.
+Aceste nume vor servi ca element comun între partea de construire a comenzilor
+de desenat - cifra_rezervor.py și modulul în care se va face efectiv desenarea
+(care nu este încă implementat).
