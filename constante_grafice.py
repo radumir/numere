@@ -1,0 +1,6 @@
+cifra_rezervor__bordura_groasa='crez$bordura$ext$grosime'
+cifra_rezervor__bordura_subtire='crez$bordura$int$grosime'
+cifra_rezervor__bordura_exterioara_culoare='crez$bordura$ext$culoare'
+cifra_rezervor__bordura_interioara_culoare='crez$bordura$int$culoare'
+cifra_rezervor__casuta_gol='crez$casuta$gol$culoare'
+cifra_rezervor__casuta_plin='crez$casuta$plin$culoare'

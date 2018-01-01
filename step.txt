@@ -5,3 +5,7 @@ respective din temă.
 Aceste nume vor servi ca element comun între partea de construire a comenzilor
 de desenat - cifra_rezervor.py și modulul în care se va face efectiv desenarea
 (care nu este încă implementat).
+Pentru a nu gresi un nume in programul de desenare le vom introduce folosind un fisier
+de constante - constante_grafice.py. Numele nu vor putea apartine decat setului
+de constante definit in acel modul. In felul acesta nu vom putea face nicio greseala
+de tastare (care va fi greu de depistat).
