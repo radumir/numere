@@ -1,6 +1,6 @@
 
-Sunt două moduri de afișare a unui pătrat. Cu rezervoarele la vedere,
-și fără afișare rezervoare, pentru a putea alege un rezervor.
-
-cifra_rezervor.deseneaza devine cifra_rezervor.deseneaza_rezervoare,
-respectiv cifra_rezervor.deseneaza_ascuns.
+Definit o metoda clicked pentru patrat in care se apeleaza metoda
+verifica pt cifra_rezervor.
+Codul care interpreteaza zonaclick la un click in zona delimitata
+de x1,y1 si x2,y2 va apela metoda atins pentru patrat care
+va apela metoda verifica pt cifra_rezervor.

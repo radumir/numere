@@ -30,3 +30,9 @@ construi de fiecare date o lista.
 Anumite instructiuni se repeta de mai multe ori.
 In cazul asta adaugarea unei metode in care izolam codul comun
 constituie o imbunatatire a codului.
+
+
+Sunt două moduri de afișare a unui pătrat. Cu rezervoarele la vedere,
+și fără afișare rezervoare, pentru a putea alege un rezervor.
+cifra_rezervor.deseneaza devine cifra_rezervor.deseneaza_rezervoare,
+respectiv cifra_rezervor.deseneaza_ascuns.

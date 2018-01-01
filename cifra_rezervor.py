@@ -8,7 +8,7 @@ class CifraRezervor():
         self.patrate = []
         for rand in [1, 2, 3]:
             for coloana in [1, 2, 3]:
-                self.patrate.append(Patrat(rand, coloana))
+                self.patrate.append(Patrat(self, rand, coloana))
 
     def deseneaza_rezervoare(self, x0, y0, tema):
         cabs = abs_coords.CoordonateAbsolute(x0, y0, tema[constante_grafice.cifra_rezervor__casuta_latura])
@@ -26,9 +26,22 @@ class CifraRezervor():
             result += patrat.deseneaza(tema, cabs, result)
         return result
 
+    def verifica(self, incercare):
+        if incercare == self.nr:
+            self.rezultat_corect()
+        else:
+            self.rezultat_gresit()
+
+    def rezultat_corect(self):
+        pass
+
+    def rezultat_gresit(self):
+        pass
+
 
 class Patrat:
-    def __init__(self, rand, coloana):
+    def __init__(self, cifra_rezervor, rand, coloana):
+        self.cifra_rezervor = cifra_rezervor
         self.rand = rand
         self.coloana = coloana
 
@@ -43,6 +56,9 @@ class Patrat:
 
     def y2(self, cabs):
         return cabs.y(self.rand)
+
+    def atins(self):
+        self.cifra_rezervor.verifica(9 - (self.rand - 1) * 3 - (self.coloana - 1))
 
     def cheie_umplere_patrat(self, plin):
         if plin is None:
@@ -60,7 +76,7 @@ class Patrat:
         cheie_culoare = self.cheie_umplere_patrat(plin)
         acc.append(['dreptunghi', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), tema[cheie_culoare]])
         if plin is None:
-            acc.append(['area', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), self])
+            acc.append(['zonaclick', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), self.atins])
 
     def deseneaza_contur(self, tema, cabs, acc):
         self.bordura_sus(tema, cabs, acc)
