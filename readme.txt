@@ -22,3 +22,8 @@ Pentru a nu gresi un nume in programul de desenare le vom introduce folosind un 
 de constante - constante_grafice.py. Numele nu vor putea apartine decat setului
 de constante definit in acel modul. In felul acesta nu vom putea face nicio greseala
 de tastare (care va fi greu de depistat).
+Vom desena patratele in coordonate relative.
+Sistemul de coordonate va fi coltul din stanga sus a cifrei rezervor.
+Unitatea va fi latura patratului.
+Rezultatul desenarii va fi colectat intr-un acumulator, pentru a nu
+construi de fiecare date o lista.

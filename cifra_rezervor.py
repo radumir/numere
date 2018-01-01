@@ -29,10 +29,10 @@ class Patrat():
         return cabs.y(self.rand - 1)
 
     def x2(self, cabs):
-        return self.coloana
+        return cabs.x(self.coloana)
 
     def y2(self, cabs):
-        return self.rand
+        return cabs.y(self.rand)
 
     def deseneaza(self, tema, cabs, acc):
         self.coloreaza_patrat(tema, cabs, acc)
@@ -57,10 +57,28 @@ class Patrat():
         acc.append(['linie', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y1(cabs), tema[cheie_grosime], tema[cheie_culoare]])
 
     def bordura_dreapta(self, tema, cabs, acc):
-        pass
+        if self.coloana % 3 == 0:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_exterioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_exterioara__culoare
+        else:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_interioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_interioara__culoare
+        acc.append(['linie', self.x2(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), tema[cheie_grosime], tema[cheie_culoare]])
 
     def bordura_jos(self, tema, cabs, acc):
-        pass
+        if self.rand == 3:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_exterioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_exterioara__culoare
+        else:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_interioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_interioara__culoare
+        acc.append(['linie', self.x1(cabs), self.y2(cabs), self.x2(cabs), self.y2(cabs), tema[cheie_grosime], tema[cheie_culoare]])
 
     def bordura_stanga(self, tema, cabs, acc):
-        pass
+        if self.coloana % 1 == 0:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_exterioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_exterioara__culoare
+        else:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_interioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_interioara__culoare
+        acc.append(['linie', self.x1(cabs), self.y1(cabs), self.x1(cabs), self.y2(cabs), tema[cheie_grosime], tema[cheie_culoare]])
