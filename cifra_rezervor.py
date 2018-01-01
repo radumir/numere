@@ -3,13 +3,23 @@ import constante_grafice
 
 
 class CifraRezervor():
-    def __init__(self):
+    def __init__(self, nr):
+        self.nr = nr
         self.patrate = []
         for rand in [1, 2, 3]:
             for coloana in [1, 2, 3]:
                 self.patrate.append(Patrat(rand, coloana))
 
-    def deseneaza(self, x0, y0, tema):
+    def deseneaza_rezervoare(self, x0, y0, tema):
+        cabs = abs_coords.CoordonateAbsolute(x0, y0, tema[constante_grafice.cifra_rezervor__casuta_latura])
+        result = []
+        martor = 9
+        for patrat in self.patrate:
+            result += patrat.deseneaza(tema, cabs, result, self.nr >= martor)
+            martor -= 1
+        return result
+
+    def deseneaza_ascuns(self, x0, y0, tema):
         cabs = abs_coords.CoordonateAbsolute(x0, y0, tema[constante_grafice.cifra_rezervor__casuta_latura])
         result = []
         for patrat in self.patrate:
@@ -17,7 +27,7 @@ class CifraRezervor():
         return result
 
 
-class Patrat():
+class Patrat:
     def __init__(self, rand, coloana):
         self.rand = rand
         self.coloana = coloana
@@ -34,12 +44,23 @@ class Patrat():
     def y2(self, cabs):
         return cabs.y(self.rand)
 
-    def deseneaza(self, tema, cabs, acc):
-        self.coloreaza_patrat(tema, cabs, acc)
+    def cheie_umplere_patrat(self, plin):
+        if plin is None:
+            return constante_grafice.cifra_rezervor__casuta_ascuns
+        elif plin:
+            return constante_grafice.cifra_rezervor__casuta_plin
+        else:
+            return constante_grafice.cifra_rezervor__casuta_gol
+
+    def deseneaza(self, tema, cabs, acc, plin=None):
+        self.coloreaza_patrat(tema, cabs, acc, plin)
         self.deseneaza_contur(tema, cabs, acc)
 
-    def coloreaza_patrat(self, tema, cabs, acc):
-        pass
+    def coloreaza_patrat(self, tema, cabs, acc, plin):
+        cheie_culoare = self.cheie_umplere_patrat(plin)
+        acc.append(['dreptunghi', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), tema[cheie_culoare]])
+        if plin is None:
+            acc.append(['area', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y2(cabs), self])
 
     def deseneaza_contur(self, tema, cabs, acc):
         self.bordura_sus(tema, cabs, acc)
@@ -50,7 +71,7 @@ class Patrat():
     def chei_bordura(self, test):
         if test:
             return constante_grafice.cifra_rezervor__bordura_exterioara__grosime, \
-                   constante_grafice.cifra_rezervor__bordura_exterioara__culoare
+                constante_grafice.cifra_rezervor__bordura_exterioara__culoare
         return constante_grafice.cifra_rezervor__bordura_interioara__grosime, \
             constante_grafice.cifra_rezervor__bordura_interioara__culoare
 

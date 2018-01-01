@@ -27,3 +27,6 @@ Sistemul de coordonate va fi coltul din stanga sus a cifrei rezervor.
 Unitatea va fi latura patratului.
 Rezultatul desenarii va fi colectat intr-un acumulator, pentru a nu
 construi de fiecare date o lista.
+Anumite instructiuni se repeta de mai multe ori.
+In cazul asta adaugarea unei metode in care izolam codul comun
+constituie o imbunatatire a codului.

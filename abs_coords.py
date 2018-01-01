@@ -9,4 +9,3 @@ class CoordonateAbsolute:
 
     def y(self, relative_y):
         return self.y0 + relative_y * self.scale
-
