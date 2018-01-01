@@ -21,10 +21,16 @@ class CifraRezervor():
 
     def deseneaza_ascuns(self, x0, y0, tema):
         cabs = abs_coords.CoordonateAbsolute(x0, y0, tema[constante_grafice.cifra_rezervor__casuta_latura])
-        result = []
+        culoare = tema[constante_grafice.cifra_rezervor__casuta_ascuns]
+        result = [['dreptunghi', self.x(x0 + 3), self.y(y0 + 3), self.x(x0 + 4), self.y(y0 + 4), culoare],
+                  ['zonaclick', self.x(x0 + 3), self.y(y0 + 3), self.x(x0 + 4), self.y(y0 + 4), self.goleste]]
+
         for patrat in self.patrate:
-            result += patrat.deseneaza(tema, cabs, result)
+            patrat.deseneaza(tema, cabs, result)
         return result
+
+    def goleste(self):
+        self.verifica(0)
 
     def verifica(self, incercare):
         if incercare == self.nr:
