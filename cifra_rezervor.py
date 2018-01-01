@@ -1,3 +1,7 @@
+import abs_coords
+import constante_grafice
+
+
 class CifraRezervor():
     def __init__(self):
         self.patrate = []
@@ -5,10 +9,11 @@ class CifraRezervor():
             for coloana in [1, 2, 3]:
                 self.patrate.append(Patrat(rand, coloana))
 
-    def deseneaza(self, tema):
+    def deseneaza(self, x0, y0, tema):
+        cabs = abs_coords.CoordonateAbsolute(x0, y0, tema[constante_grafice.cifra_rezervor__casuta_latura])
         result = []
         for patrat in self.patrate:
-            result += patrat.deseneaza(tema, result)
+            result += patrat.deseneaza(tema, cabs, result)
         return result
 
 
@@ -17,40 +22,45 @@ class Patrat():
         self.rand = rand
         self.coloana = coloana
 
-    def x1(self):
-        return self.coloana - 1
+    def x1(self, cabs):
+        return cabs.x(self.coloana - 1)
 
-    def y1(self):
-        return self.rand - 1
+    def y1(self, cabs):
+        return cabs.y(self.rand - 1)
 
-    def x2(self):
+    def x2(self, cabs):
         return self.coloana
 
-    def y2(self):
+    def y2(self, cabs):
         return self.rand
 
-    def deseneaza(self, tema, acc):
-        self.coloreaza_patrat(tema, acc)
-        self.deseneaza_contur(tema, acc)
+    def deseneaza(self, tema, cabs, acc):
+        self.coloreaza_patrat(tema, cabs, acc)
+        self.deseneaza_contur(tema, cabs, acc)
 
-    def coloreaza_patrat(self, tema, acc):
+    def coloreaza_patrat(self, tema, cabs, acc):
         pass
 
-    def deseneaza_contur(self, tema, acc):
-        self.bordura_sus(tema, acc)
-        self.bordura_dreapta(tema, acc)
-        self.bordura_jos(tema, acc)
-        self.bordura_stanga(tema, acc)
+    def deseneaza_contur(self, tema, cabs, acc):
+        self.bordura_sus(tema, cabs, acc)
+        self.bordura_dreapta(tema, cabs, acc)
+        self.bordura_jos(tema, cabs, acc)
+        self.bordura_stanga(tema, cabs, acc)
 
-    def bordura_sus(self, tema, acc):
-        # return ['line', x1, y1, x2, y2, color]
+    def bordura_sus(self, tema, cabs, acc):
+        if self.rand == 1:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_exterioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_exterioara__culoare
+        else:
+            cheie_grosime = constante_grafice.cifra_rezervor__bordura_interioara__grosime
+            cheie_culoare = constante_grafice.cifra_rezervor__bordura_interioara__culoare
+        acc.append(['linie', self.x1(cabs), self.y1(cabs), self.x2(cabs), self.y1(cabs), tema[cheie_grosime], tema[cheie_culoare]])
+
+    def bordura_dreapta(self, tema, cabs, acc):
         pass
 
-    def bordura_dreapta(self, tema, acc):
+    def bordura_jos(self, tema, cabs, acc):
         pass
 
-    def bordura_jos(self, tema, acc):
-        pass
-
-    def bordura_stanga(self, tema, acc):
+    def bordura_stanga(self, tema, cabs, acc):
         pass
